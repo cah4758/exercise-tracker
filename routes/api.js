@@ -13,10 +13,14 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-// view past 7 workouts with combined duration
+// create workout
+router.post("/api/workouts", (req, res) => {});
 
-// add new exercise to recent plan
+// add exercise
+router.put("/api/workouts/:id", (req, res) => {});
 
-// add a new exercise to the recen workout plan
+router.get("/exercise", (req, res) => {
+  res.redirect("/exercise.html");
+});
 
 module.exports = router;
