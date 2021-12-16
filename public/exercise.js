@@ -12,22 +12,21 @@ const distanceInput = document.querySelector("#distance");
 const completeButton = document.querySelector("button.complete");
 const addButton = document.querySelector("button.add-another");
 const toast = document.querySelector("#toast");
-const newWorkout = document.querySelector(".new-workout")
+const newWorkout = document.querySelector(".new-workout");
 
 let workoutType = null;
 let shouldNavigateAway = false;
 
 async function initExercise() {
   let workout;
-
+  console.log("initEx");
   if (location.search.split("=")[1] === undefined) {
-    workout = await API.createWorkout()
-    console.log(workout)
+    workout = await API.createWorkout();
+    console.log(workout);
   }
   if (workout) {
     location.search = "?id=" + workout._id;
   }
-
 }
 
 initExercise();
@@ -104,14 +103,14 @@ async function handleFormSubmit(event) {
     workoutData.type = "cardio";
     workoutData.name = cardioNameInput.value.trim();
     workoutData.distance = Number(distanceInput.value.trim());
-    workoutData.duration = Number(durationInput.value.trim());
+    workoutData.totalDuration = Number(durationInput.value.trim());
   } else if (workoutType === "resistance") {
     workoutData.type = "resistance";
     workoutData.name = nameInput.value.trim();
     workoutData.weight = Number(weightInput.value.trim());
     workoutData.sets = Number(setsInput.value.trim());
     workoutData.reps = Number(repsInput.value.trim());
-    workoutData.duration = Number(resistanceDurationInput.value.trim());
+    workoutData.totalDuration = Number(resistanceDurationInput.value.trim());
   }
 
   await API.addExercise(workoutData);
@@ -153,4 +152,4 @@ toast.addEventListener("animationend", handleToastAnimationEnd);
 
 document
   .querySelectorAll("input")
-  .forEach(element => element.addEventListener("input", validateInputs));
+  .forEach((element) => element.addEventListener("input", validateInputs));

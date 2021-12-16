@@ -1,26 +1,42 @@
 const router = require("express").Router();
-const Workout = require("../models/workout");
+const Workout = require("../models/Workout");
 
-//view past 7 workouts with combined weight
 router.get("/api/workouts", (req, res) => {
   Workout.find({})
-    .sort({ date: 1 })
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .sort({ date: -1 })
+    .then((workout) => {
+      res.json(workout);
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 });
 
-// create workout
-router.post("/api/workouts", (req, res) => {});
+// initialize new workout
+router.post("/api/workouts", ({ body }, res) => {
+  Workout.create(body)
+    .then((workout) => {
+      res.json(workout);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
 
-// add exercise
-router.put("/api/workouts/:id", (req, res) => {});
-
-router.get("/exercise", (req, res) => {
-  res.redirect("/exercise.html");
+// update current workout
+router.put("/api/workouts/:id", ({ params, body }, res) => {
+  Workout.findOneAndUpdate(
+    {
+      _id: params.id,
+    },
+    {
+      $push: {
+        exercises: body,
+      },
+    }
+  ).then((workout) => {
+    res.json(workout);
+  });
 });
 
 module.exports = router;
