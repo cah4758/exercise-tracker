@@ -23,6 +23,23 @@ router.post("/api/workouts", ({ body }, res) => {
     });
 });
 
+// select range of workouts
+router.get("/api/workouts/range", ({ body }, res) => {
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalWeight: { $sum: "$exercises.weight" },
+        totalDuration: { $sum: "$exercises.totalDuration" },
+      },
+    },
+  ])
+    .sort({ date: -1 })
+    .limit(7)
+    .then((workout) => {
+      res.json(workout);
+    });
+});
+
 // update current workout
 router.put("/api/workouts/:id", ({ params, body }, res) => {
   Workout.findOneAndUpdate(
