@@ -14,7 +14,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Bicep Curl",
-        totalDuration: 20,
+        duration: 20,
         weight: 100,
         reps: 10,
         sets: 4,
@@ -27,7 +27,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Lateral Pull",
-        totalDuration: 20,
+        duration: 20,
         weight: 300,
         reps: 10,
         sets: 4,
@@ -40,7 +40,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Push Press",
-        totalDuration: 25,
+        duration: 25,
         weight: 185,
         reps: 8,
         sets: 4,
@@ -53,7 +53,7 @@ const workoutSeed = [
       {
         type: "cardio",
         name: "Running",
-        totalDuration: 25,
+        duration: 25,
         distance: 4,
       },
     ],
@@ -64,7 +64,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        totalDuration: 20,
+        duration: 20,
         weight: 285,
         reps: 10,
         sets: 4,
@@ -77,7 +77,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        totalDuration: 20,
+        duration: 20,
         weight: 300,
         reps: 10,
         sets: 4,
@@ -90,7 +90,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Quad Press",
-        totalDuration: 30,
+        duration: 30,
         weight: 300,
         reps: 10,
         sets: 4,
@@ -103,7 +103,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Bench Press",
-        totalDuration: 20,
+        duration: 20,
         weight: 300,
         reps: 10,
         sets: 4,
@@ -116,7 +116,7 @@ const workoutSeed = [
       {
         type: "resistance",
         name: "Military Press",
-        totalDuration: 20,
+        duration: 20,
         weight: 300,
         reps: 10,
         sets: 4,
